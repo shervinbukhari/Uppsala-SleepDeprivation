@@ -1,0 +1,10 @@
+
+x = [psd23_grd.freq flip(psd23_grd.freq)]; % x is the frequency range
+facealpha = 0.2; % transparency of shaded area
+y23_above = mean(psd23_grd.powspctrm, [1]) + mean(psd23_sem.powspctrmsem,[1]); % upper limit of shade (mean + SEM)
+y23_below = mean(psd23_grd.powspctrm, [1]) - mean(psd23_sem.powspctrmsem,[1]); % lower limit of shade (mean - SEM)
+y23_patch = [y23_above flip(y23_below)];
+ft_plot_patch(x, y23_patch,'facecolor',[0 0.4470 0.7410],'facealpha',facealpha);hold on; %Gives plot with only the shaded area
+p1=ft_plot_line(psd23_grd.freq, mean(psd23_grd.powspctrm, [1]),'color',[0 0.4470 0.7410],'linewidth',2); % Adds the mean PSD as a line in the middle
+
+
